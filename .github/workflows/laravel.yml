@@ -1,50 +1,25 @@
-name: laravel
+name: Publish website to cpanel
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-    
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Upload from public_html via FTP
-#         uses: airvzxf/ftp-deployment-action@latest
-#         with:
-#           server: ${{ secrets.FTP_SERVER }}
-#           user: ${{ secrets.FTP_USERNAME }}
-#           password: ${{ secrets.FTP_PASSWORD }}
-#           local_dir: "./public_html/testLaravelGitDeploy/"
-#           remote_dir: "/home/codeitc/public_html/testLaravelGitDeploy"
-#           delete: "true"
-#           max_retries: "7"
-#           no_symlinks: "false"
-#           ftp_ssl_allow: "true"
-#           ftp_use_feat: "true"
-#           ftp_nop_interval: "9"
-#           net_max_retries: "0"
-#           net_persist_retries: "11"
-#           net_timeout: "13s"
-#           dns_max_retries: "17"
-#           dns_fatal_timeout: "never"
-
-
+  
 jobs:
-  build:
-
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@main
-      env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: "-rltgoDzvO --delete"
-          SOURCE: "dist/"
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
-        
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: FTP-Deploy-Action
+        uses: sand4rt/ftp-deployer@v1.4
+        with:
+          sftp: false # optional
+          host: 59.144.165.144 # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
+          port: 2083 # optional, default is: 21
+          username: mailto:ftpgitsample@codeit.cloud # FTP username
+          password: U5gULZ8aTpb6mEb # FTP password
+          remote_folder: /home/codeitc/public_html/ftpgitsample/ # optional, remote path of your FTP server

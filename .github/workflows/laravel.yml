@@ -7,15 +7,17 @@ on:
     branches: [ "main" ]
   
 jobs:
-  build:
-    name: Build
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
     steps:
-    - name: deploye app
-      uses: appleboy/ssh-action@master
-      with:
-        HOST: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PASSWORD: ${{ secrets.PASSWORD }}
-        SCRIPT: 'cd home/codeitc/public_html/testLaravelGitDeploy/  && ./deployer.sh'
-
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: deploye app
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: 'cd home/codeitc/public_html/testLaravelGitDeploy/  && ./deployer.sh'

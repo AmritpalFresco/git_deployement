@@ -4,20 +4,23 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    
 
-jobs: 
-	deployment:   
-	runs-on: ubuntu-latest   
-  
-	steps:    
-	- uses: actions/checkout@v2    
-	- name: Say Hello!     
-	  run: echo "Hello there!"    
-  
-	- name: Deploy code to Server     
-	env:       
-		SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}     
-	  run: |       
-		echo $SSH_KEY | base64 -d > ssh-key       
-    chmod 400 ssh-key       
-    	ssh -i ssh-key -o StrictHostKeyChecking=no ubuntu@3.145.1.14 "cd /home/ubuntu/sample-app-deployment-with-github-actions && GIT_SSH_COMMAND='ssh -i /home/ubuntu/.ssh/ssh-key' git pull origin main"
+
+jobs:
+  deploy-to-prod:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Get latest code
+      uses: actions/checkout@master
+
+    - name: Deploy
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: EXCLUDED_FOR_SECURITY
+        local_dir: "./public_html/testLaravelGitDeploy/"
+        server-dir: "/home/codeitc/public_html/testLaravelGitDeploy"
+        username: ${{ secrets.PROD_FTP_USER }}
+        password: ${{ secrets.PROD_FTP_PASSWORD }}
+        state-name: sync-state.json

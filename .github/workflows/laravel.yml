@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: deploye app
-        uses: appleboy/ssh-action@master
+        uses: actions/checkout@v2
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}

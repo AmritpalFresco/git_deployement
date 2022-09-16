@@ -1,7 +1,6 @@
 name: laravel
 on:
-
-  pull_request:
+  push:
     branches: [ "main" ]
     
 jobs:
@@ -16,16 +15,4 @@ jobs:
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local_dir: "./public_html/testLaravelGitDeploy"
-          remote_dir: "/home/codeitc/public_html/testLaravelGitDeploy"
-          delete: "true"
-          max_retries: "7"
-          no_symlinks: "false"
-          ftp_ssl_allow: "true"
-          ftp_use_feat: "true"
-          ftp_nop_interval: "9"
-          net_max_retries: "0"
-          net_persist_retries: "11"
-          net_timeout: "13s"
-          dns_max_retries: "17"
-          dns_fatal_timeout: "never"
-      
+          delete: "false"

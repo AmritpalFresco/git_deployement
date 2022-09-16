@@ -29,22 +29,26 @@ on:
 #           net_timeout: "13s"
 #           dns_max_retries: "17"
 #           dns_fatal_timeout: "never"
+
+
 jobs:
-  web-deploy:
-    name: Deploy
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Get latest code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@master
+      - name: Build Eleventy
+        uses: TartanLlama/actions-eleventy@master
+        with:
+          args: --output html
+          install_dependencies: true
 
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.2
-      with:
-        server: 59.144.165.144
-        username: ftpgitsample@codeit.cloud
-        password: 'U5gULZ8aTpb6mEb'
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          fileToExclude.txt
+      - name: Copying files to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
+          rm: true
+          source: "/home/codeitc/public_html/testLaravelGitDeploy"
+          target: "${{ secrets.REMOTE_DIR }}"

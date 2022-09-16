@@ -7,15 +7,19 @@ on:
   
 
 jobs:
-  build:
-    name: Deploy code to prod
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: Deploy
-        uses: musps/action-deployer-php@master
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          args: deploy prod
-        env:
-          SSH_PRIVATE_KEY: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC2LzjlnGu684KZgxivahqeH7yGW1zbsd+e6MY1bll/jdEepM4V6eXJS38Xzc+ZAMnCle6Xqwn6j1X8EU6wFzwqLnIPh6xRjI0XPGJDekYo8NUP6sRzlUjtqSgrx5WiDVycJIRvTuSFTsv14PtpOJqlEi0+nPOa0sMOVxT/z2CgAfmB7WLyoVeutoXejAMfR5QC49oZ/1Vejl6v0KxmzXA9Nx076T8rqVB0PwikkyusUHCJPmxHmV1i5ZHMj3Qqu6QF8kSI1fF/pF44hscPR42TPAzuaiA2+C5apoWYuitXj+SNfDJtOxWVfFGDJu3cs1MT0La7b2rhxXEgJce9qEqOZbLYskDYuDbE9LgfNCFebTFhRzEdJad39vzA99kTHNcRYnHjsKYuvxGfZCS16ZzyrZu/MH5UKLNTHP6K030sSFDJhyIgSl54U8wtWdwzbymauS/RPXq4Cci8bnraymSl8kIs2aDX+UjgDonfoAd8ovUB2dyyUjlpel64cuCo+1VY/4HrXdxDXTcg34QVzkASEPZ+G9tAec/vdLf7Vqt9XdzmiCnl1zn8wUlKQ5hp5LOxhJUg1pga8RFXO+wfRwgrJb1Z9oYgAmxzCFCPHwIswaAn8G4hrlDvXpW/ZSYL9iREQu6DxED3W2GZFM21IHv3TQhFUK39rJaT8wtnG9TaWw== amritpal.fresco@gmail.com
+          php-version: '8.0'
+
+      - name: Deploy
+        uses: deployphp/action@v1
+        with:
+          private-key: ${{ secrets.PRIVATE_KEY }}
+          dep: deploy

@@ -42,7 +42,7 @@ jobs:
       with:
         server: ftp://59.144.165.144
         username: ftpgitsample@codeit.cloud
-        password: ${{ secrets.password }}
+        password: 'U5gULZ8aTpb6mEb'
         exclude: |
           **/.git*
           **/.git*/**

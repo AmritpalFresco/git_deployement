@@ -14,8 +14,8 @@ jobs:
     - name: deploye app
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        script: 'cd home/codeitc/public_html/testLaravelGitDeploy/  && ./deployer.sh'
+        HOST: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        SCRIPT: 'cd home/codeitc/public_html/testLaravelGitDeploy/  && ./deployer.sh'
 

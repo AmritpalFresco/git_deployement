@@ -51,4 +51,4 @@ jobs:
           passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
           rm: true
           source: "/home/codeitc/public_html/testLaravelGitDeploy"
-          target: "${{ secrets.REMOTE_DIR }}"
+          target: "/home/codeitc/public_html/testLaravelGitDeploy"

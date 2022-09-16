@@ -1,7 +1,6 @@
 name: laravel
 on:
-  push:
-    branches: [ "main" ]
+
   pull_request:
     branches: [ "main" ]
     
@@ -29,3 +28,4 @@ jobs:
           net_timeout: "13s"
           dns_max_retries: "17"
           dns_fatal_timeout: "never"
+      

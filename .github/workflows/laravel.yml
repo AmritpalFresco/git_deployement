@@ -7,8 +7,17 @@ on:
     branches: [ "main" ]
   
 jobs:
- deployment:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
-    environment: production
     steps:
-      - name: deploy
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: FTP-Deploy-Action
+        uses: actions/checkout@v1
+        with:
+            username: "codeitc"
+            host: "59.144.165.144"
+            password: 'Codeit@Cloud123'
+            script: 'cd home/codeitc/public_html/testLaravelGitDeploy/  && ./deployer.sh'    

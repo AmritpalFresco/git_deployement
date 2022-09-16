@@ -1,22 +1,21 @@
-name: Laravel
-
+name: Test action Deployer PHP
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   
+
 jobs:
-
-
-  try-ssh-commands:
+  build:
+    name: Deploy code to prod
     runs-on: ubuntu-latest
-    name: SSH MY_TEST
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: test_ssh
-        uses: ./
+        uses: actions/checkout@v1
+      - name: Deploy
+        uses: musps/action-deployer-php@master
         with:
-          ssh_key: ${{secrets.SSH_PRIVATE_KEY}}
-          known_hosts: ${{secrets.SSH_KNOWN_HOSTS}}
+          args: deploy prod
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}

@@ -7,14 +7,17 @@ on:
     branches: [ "main" ]
   
 jobs:
-  FTP-Deploy-Action:
-    name: FTP-Deploy-Action
+  web-deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: deploye app
-        uses: actions/checkout@v2
+      uses: actions/checkout@v2
+
+      - name: Sync files
+        user: SamKirKland/FTP-Deploy-Action@4.0.0
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: 'cd home/codeitc/public_html/testLaravelGitDeploy/  && ./deployer.sh'
+          server: 59.144.165.144
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          server-dir: 'cd home/codeitc/public_html/testLaravelGitDeploy/  && ./deployer.sh'

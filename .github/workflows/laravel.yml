@@ -16,8 +16,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local_dir: "public_html/testLaravelGitDeploy"
-          remote_dir: "public_html/testLaravelGitDeploy"
+          local_dir: "./public_html"
+          remote_dir: "/home/codeitc/public_html/testLaravelGitDeploy/"
           delete: "true"
           max_retries: "7"
           no_symlinks: "false"

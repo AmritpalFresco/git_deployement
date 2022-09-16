@@ -29,21 +29,22 @@ on:
 #           net_timeout: "13s"
 #           dns_max_retries: "17"
 #           dns_fatal_timeout: "never"
-
 jobs:
-  deploy-to-prod:
+  web-deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-
     - name: Get latest code
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
 
-    - name: Deploy
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
-        server: EXCLUDED_FOR_SECURITY
-        local_dir: "./public_html/testLaravelGitDeploy/"
-        server-dir: "/home/codeitc/public_html/"
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        state-name: sync-state.json
+        server: ftp://59.144.165.144
+        username: ftpgitsample@codeit.cloud
+        password: ${{ secrets.password }}
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          fileToExclude.txt

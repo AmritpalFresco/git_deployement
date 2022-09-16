@@ -17,7 +17,5 @@ jobs:
       - name: FTP-Deploy-Action
         uses: actions/checkout@v1
         with:
-            username: "codeitc"
-            host: "59.144.165.144"
-            password: 'Codeit@Cloud123'
-            script: 'cd home/codeitc/public_html/testLaravelGitDeploy/  && ./deployer.sh'    
+            path: 'cd home/codeitc/public_html/testLaravelGitDeploy/  && ./deployer.sh'    
+

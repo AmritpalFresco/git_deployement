@@ -1,26 +1,31 @@
-name: Test action Deployer PHP
+name: laravel
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  
-
+    
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Upload from public_html via FTP
+        uses: airvzxf/ftp-deployment-action@latest
         with:
-          php-version: '8.0'
-
-      - name: Deploy
-        uses: deployphp/action@v1
-        with:
-          private-key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC2LzjlnGu684KZgxivahqeH7yGW1zbsd+e6MY1bll/jdEepM4V6eXJS38Xzc+ZAMnCle6Xqwn6j1X8EU6wFzwqLnIPh6xRjI0XPGJDekYo8NUP6sRzlUjtqSgrx5WiDVycJIRvTuSFTsv14PtpOJqlEi0+nPOa0sMOVxT/z2CgAfmB7WLyoVeutoXejAMfR5QC49oZ/1Vejl6v0KxmzXA9Nx076T8rqVB0PwikkyusUHCJPmxHmV1i5ZHMj3Qqu6QF8kSI1fF/pF44hscPR42TPAzuaiA2+C5apoWYuitXj+SNfDJtOxWVfFGDJu3cs1MT0La7b2rhxXEgJce9qEqOZbLYskDYuDbE9LgfNCFebTFhRzEdJad39vzA99kTHNcRYnHjsKYuvxGfZCS16ZzyrZu/MH5UKLNTHP6K030sSFDJhyIgSl54U8wtWdwzbymauS/RPXq4Cci8bnraymSl8kIs2aDX+UjgDonfoAd8ovUB2dyyUjlpel64cuCo+1VY/4HrXdxDXTcg34QVzkASEPZ+G9tAec/vdLf7Vqt9XdzmiCnl1zn8wUlKQ5hp5LOxhJUg1pga8RFXO+wfRwgrJb1Z9oYgAmxzCFCPHwIswaAn8G4hrlDvXpW/ZSYL9iREQu6DxED3W2GZFM21IHv3TQhFUK39rJaT8wtnG9TaWw== amritpal.fresco@gmail.com
-
-          dep: deploy
+          server: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local_dir: "./public_html"
+          remote_dir: "/home/codeitc/public_html/testLaravelGitDeploy"
+          delete: "true"
+          max_retries: "7"
+          no_symlinks: "false"
+          ftp_ssl_allow: "true"
+          ftp_use_feat: "true"
+          ftp_nop_interval: "9"
+          net_max_retries: "0"
+          net_persist_retries: "11"
+          net_timeout: "13s"
+          dns_max_retries: "17"
+          dns_fatal_timeout: "never"

@@ -19,7 +19,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         server: EXCLUDED_FOR_SECURITY
-        local_dir: "./public_html/testLaravelGitDeploy/"
+        local-dir: "./public_html/testLaravelGitDeploy/"
         server-dir: "/home/codeitc/public_html/testLaravelGitDeploy"
         username: ${{ secrets.PROD_FTP_USER }}
         password: ${{ secrets.PROD_FTP_PASSWORD }}

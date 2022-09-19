@@ -17,8 +17,10 @@ jobs:
       - name: FTP-Deploy-Action
         uses: sand4rt/ftp-deployer@v1.4
         with:
-          sftp: false
-          host: 59.144.165.144 
-          username: ftpgitsample@codeit.cloud
-          password: U5gULZ8aTpb6mEb
-          remote_folder: ./public_html/testLaravelGitDeploy 
+          sftp: true
+          host: 192.168.1.100
+          username: codeitc
+          password: Codeit@Cloud123
+          remote_folder: /home/codeitc/public_html/testLaravelGitDeploy
+          cleanup: false
+          pasive: true

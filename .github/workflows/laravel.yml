@@ -21,6 +21,6 @@ jobs:
           host: 192.168.1.100
           username: codeitc
           password: Codeit@Cloud123
-          remote_folder: /home/codeitc/public_html/testLaravelGitDeploy
+          remote_folder: /home/codeitc/public_html/testLaravelGitDeploy/
           cleanup: false
           pasive: true

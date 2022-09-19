@@ -17,9 +17,9 @@ jobs:
       - name: FTP-Deploy-Action
         uses: sand4rt/ftp-deployer@v1.4
         with:
-          sftp: false # optional
-          host: 59.144.165.144 # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
-          port: 2083 # optional, default is: 21
-          username: mailto:ftpgitsample@codeit.cloud # FTP username
-          password: U5gULZ8aTpb6mEb # FTP password
-          remote_folder: /home/codeitc/public_html/ftpgitsample/ # optional, remote path of your FTP server
+          sftp: false
+          host: 59.144.165.144 
+          port: 2083
+          username: ftpgitsample@codeit.cloud
+          password: U5gULZ8aTpb6mEb 
+          remote_folder: /home/codeitc/public_html/testLaravelGitDeploy 

@@ -19,7 +19,7 @@ jobs:
         with:
           sftp: false
           host: 59.144.165.144 
-          port: 21
+          port: 2083
           username: fresco
           password: Fresco@123
           remote_folder: ./public_html/testLaravelGitDeploy/

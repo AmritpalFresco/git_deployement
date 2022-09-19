@@ -14,6 +14,5 @@
     </head>
     <body class="antialiased">
        <h2>Laravel App testing</h2>
-       <p>this is a testing message</p>
     </body>
 </html>

@@ -1,42 +1,24 @@
-# name: Publish website to cpanel
-# on:
-#   push:
-#     branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
+name: Publish website to cpanel
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
   
-# jobs:
-#   FTP-Deploy-Action:
-#     name: FTP-Deploy-Action
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-#         with:
-#           fetch-depth: 2
-#       - name: FTP-Deploy-Action
-#         uses: sand4rt/ftp-deployer@v1.4
-#         with:
-#           sftp: false
-#           host: 59.144.165.144 
-#           username: ftpgitsample@codeit.cloud
-#           password: U5gULZ8aTpb6mEb 
-#           remote_folder: /home/codeitc/public_html/testLaravelGitDeploy 
-
-
-on: push
-name: Deploy website on push
 jobs:
-  web-deploy:
-    name: Deploy
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
     steps:
-    - name: Get latest code
-      uses: actions/checkout@v2
-
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.2
-      with:
-        server: 59.144.165.144
-        username: fresco
-        password: ${{ secrets.password }}
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: FTP-Deploy-Action
+        uses: sand4rt/ftp-deployer@v1.4
+        with:
+          sftp: false
+          host: 59.144.165.144 
+          username: ftpgitsample@codeit.cloud
+          password: U5gULZ8aTpb6mEb 
+          remote_folder: /home/codeitc/public_html/testLaravelGitDeploy 

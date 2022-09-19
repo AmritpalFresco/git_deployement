@@ -20,5 +20,5 @@ jobs:
           sftp: false
           host: 59.144.165.144 
           username: ftpgitsample@codeit.cloud
-          password: U5gULZ8aTpb6mEb 
+          password: U5gULZ8aTpb6mEbb
           remote_folder: /home/codeitc/public_html/testLaravelGitDeploy 

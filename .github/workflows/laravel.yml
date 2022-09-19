@@ -21,4 +21,4 @@ jobs:
           host: 59.144.165.144 
           username: ftpgitsample@codeit.cloud
           password: U5gULZ8aTpb6mEb
-          remote_folder: /home/codeitc/public_html/testLaravelGitDeploy/
+          remote_folder: ./public_html/testLaravelGitDeploy/

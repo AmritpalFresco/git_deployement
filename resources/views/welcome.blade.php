@@ -13,6 +13,6 @@
         </style>
     </head>
     <body class="antialiased">
-       <h2>Laravel App testing 2</h2>
+       <h2>Laravel App testing 3</h2>
     </body>
 </html>

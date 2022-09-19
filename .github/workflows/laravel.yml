@@ -16,10 +16,7 @@ jobs:
           fetch-depth: 2
       - name: FTP-Deploy-Action
         uses: sand4rt/ftp-deployer@v1.4
-      
-      - name: FTP-Deploy-Action
-        run: git pull origin main
-        
+
         with:
           sftp: false
           host: 59.144.165.144 
@@ -28,3 +25,4 @@ jobs:
           password: Fresco@123
           remote_folder: ./public_html/testLaravelGitDeploy/
           local_folder: /home/codeitc/public_html/
+          run: git pull origin main

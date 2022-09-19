@@ -19,8 +19,8 @@ jobs:
         with:
           sftp: false
           host: 59.144.165.144 
-          port: 22
-          username: ftpgitsample@codeit.cloud
-          password: U5gULZ8aTpb6mEb
+          port: 21
+          username: fresco
+          password: Fresco@123
           remote_folder: ./public_html/testLaravelGitDeploy/
           local_folder: /home/codeitc/public_html/

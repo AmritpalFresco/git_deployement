@@ -23,4 +23,4 @@ jobs:
           port: 2083
           username: fresco
           password: Fresco@123
-          remote_folder: testLaravelGitDeploy/
+          remote_folder: /home/codeitc/public_html/testLaravelGitDeploy/
